@@ -8,11 +8,13 @@ import android.app.TimePickerDialog;
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.Picture;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TimePicker;
 
@@ -28,7 +30,15 @@ public class AddNote extends AppCompatActivity {
     private DatePickerDialog datePickerDialog;
     private Button dateButton;
     private Button timeButton;
+    private EditText noteTitle;
     int hour, min;
+
+    private String title;
+    private String description;
+    private Picture picture;
+    private String date;
+    private String time;
+
 
     public void takePhoto(View view) {
         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
@@ -44,6 +54,7 @@ public class AddNote extends AppCompatActivity {
         dateButton = findViewById(R.id.datePickerButton);
         dateButton.setText(getTodaysDate());
         timeButton = findViewById(R.id.timeButton);
+        noteTitle = findViewById(R.id.NoteTitle);
     }
 
     private String getTodaysDate() {
@@ -142,6 +153,6 @@ public class AddNote extends AppCompatActivity {
     }
 
     public void save(View view) {
-
+        title = noteTitle.getText().toString();
     }
 }
