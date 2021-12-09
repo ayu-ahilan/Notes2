@@ -140,4 +140,8 @@ public class AddNote extends AppCompatActivity {
         timePickerDialog.setTitle("Select Time");
         timePickerDialog.show();
     }
+
+    public void save(View view) {
+
+    }
 }
