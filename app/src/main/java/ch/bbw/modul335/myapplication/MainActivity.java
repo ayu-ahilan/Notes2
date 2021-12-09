@@ -16,9 +16,9 @@ public class MainActivity extends AppCompatActivity {
 
     Button addNote;
     //Objekte drin
-    ArrayList<Note> toDoList = new ArrayList<Note>();
+    ArrayList<Note> noteList = new ArrayList<Note>();
     // Titel drin
-    ArrayList<String> toDoListS = new ArrayList<String>();
+    ArrayList<String> notesLists = new ArrayList<String>();
     ListView list;
     private static MainActivity instance;
 
@@ -40,9 +40,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void loadToDos(){
-        toDoListS.clear();
-        for (Note note:toDoList) {
-            toDoListS.add(note.getTitle());
+        notesLists.clear();
+        for (Note note:noteList) {
+            notesLists.add(note.getTitle());
         }
     }
 
@@ -50,9 +50,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         loadToDos();
-        if (toDoList.size() > 0) {
+        if (noteList.size() > 0) {
             final ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>
-                    (this, android.R.layout.simple_list_item_1, toDoListS);
+                    (this, android.R.layout.simple_list_item_1, notesLists);
             list.setAdapter(arrayAdapter);
             /*list.setOnClickListener(new View.OnClickListener() {
                 @Override

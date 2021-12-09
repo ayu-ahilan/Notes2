@@ -164,7 +164,7 @@ public class AddNote extends AppCompatActivity {
         date = dateButton.getText().toString();
         time = timeButton.getText().toString();
         Note note = new Note(title, description, picture, date, time);
-        MainActivity.getInstance().toDoList.add(note);
+        MainActivity.getInstance().noteList.add(note);
 
         setContentView(R.layout.activity_main);
         saveButton.setOnClickListener(v -> {
