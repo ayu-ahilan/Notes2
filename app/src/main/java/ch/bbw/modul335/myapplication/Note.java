@@ -17,4 +17,7 @@ public class Note {
         this.time = time;
     }
 
+    public String getTitle() {
+        return this.title;
+    }
 }

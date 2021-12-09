@@ -16,7 +16,7 @@ public class MainActivity extends AppCompatActivity {
 
     Button addNote;
     //Objekte drin
-    ArrayList<String> toDoList = new ArrayList<String>();
+    ArrayList<Note> toDoList = new ArrayList<Note>();
     // Titel drin
     ArrayList<String> toDoListS = new ArrayList<String>();
     ListView list;
@@ -41,8 +41,8 @@ public class MainActivity extends AppCompatActivity {
 
     public void loadToDos(){
         toDoListS.clear();
-        for (String toDo:toDoList) {
-            toDoListS.add(toDo);
+        for (Note note:toDoList) {
+            toDoListS.add(note.getTitle());
         }
     }
 

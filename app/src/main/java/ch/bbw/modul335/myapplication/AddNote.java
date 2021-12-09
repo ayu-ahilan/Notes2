@@ -163,7 +163,8 @@ public class AddNote extends AppCompatActivity {
 
         date = dateButton.getText().toString();
         time = timeButton.getText().toString();
-        MainActivity.getInstance().toDoList.add(title);
+        Note note = new Note(title, description, picture, date, time);
+        MainActivity.getInstance().toDoList.add(note);
 
         setContentView(R.layout.activity_main);
         saveButton.setOnClickListener(v -> {
@@ -171,7 +172,5 @@ public class AddNote extends AppCompatActivity {
             startActivity(intent);
         });
         this.finish();
-
-        Note note = new Note(title, description, picture, date, time);
     }
 }
