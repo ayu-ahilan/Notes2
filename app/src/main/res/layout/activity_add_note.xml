@@ -6,4 +6,41 @@
     android:layout_height="match_parent"
     tools:context=".AddNote">
 
+    <LinearLayout
+        android:layout_width="409dp"
+        android:layout_height="729dp"
+        android:orientation="vertical"
+        tools:layout_editor_absoluteX="1dp"
+        tools:layout_editor_absoluteY="1dp"
+        tools:ignore="MissingConstraints">
+        tools:ignore="MissingConstraints">
+
+        <TextView
+            android:id="@+id/stopper1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:ignore="MissingConstraints" />
+
+    <EditText
+        android:id="@+id/NoteTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Note Title"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/stopper2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:ignore="MissingConstraints" />
+
+    <EditText
+        android:id="@+id/NoteDescription"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Note description"
+        tools:ignore="MissingConstraints" />
+
+    </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
