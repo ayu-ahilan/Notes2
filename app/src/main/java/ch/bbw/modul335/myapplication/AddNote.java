@@ -3,6 +3,7 @@ package ch.bbw.modul335.myapplication;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.widget.Button;
 
 public class AddNote extends AppCompatActivity {
 
