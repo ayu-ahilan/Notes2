@@ -13,38 +13,40 @@
         tools:layout_editor_absoluteX="1dp"
         tools:layout_editor_absoluteY="1dp"
         tools:ignore="MissingConstraints">
-        tools:ignore="MissingConstraints">
 
         <TextView
             android:id="@+id/stopper1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             tools:ignore="MissingConstraints" />
+        <EditText
+            android:id="@+id/NoteTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Note Title"
+            tools:ignore="MissingConstraints" />
 
-    <EditText
-        android:id="@+id/NoteTitle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Note Title"
-        tools:ignore="MissingConstraints" />
+        <TextView
+            android:id="@+id/stopper2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:ignore="MissingConstraints" />
 
-    <TextView
-        android:id="@+id/stopper2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        tools:ignore="MissingConstraints" />
-
-    <EditText
-        android:id="@+id/NoteDescription"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Note description"
-        tools:ignore="MissingConstraints" />
+        <EditText
+            android:id="@+id/NoteDescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Note description"
+            tools:ignore="MissingConstraints" />
 
         <Button
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="Add" />
+            android:onClick="takePhoto"
+            android:text="Take Photo"
+            tools:ignore="OnClick" />
+
+
 
     </LinearLayout>
 
