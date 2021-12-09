@@ -41,6 +41,11 @@
         android:hint="Note description"
         tools:ignore="MissingConstraints" />
 
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Add" />
+
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
