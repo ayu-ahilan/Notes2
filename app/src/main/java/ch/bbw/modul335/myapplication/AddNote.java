@@ -35,9 +35,10 @@ public class AddNote extends AppCompatActivity {
     private EditText noteDescription;
     int hour, min;
 
+
     private String title;
     private String description;
-    private Picture picture;
+    private Bitmap picture;
     private String date;
     private String time;
 
@@ -159,7 +160,7 @@ public class AddNote extends AppCompatActivity {
     public void save(View view) {
         title = noteTitle.getText().toString();
         description = noteTitle.getText().toString();
-        //picture speichern
+
         date = dateButton.getText().toString();
         time = timeButton.getText().toString();
         MainActivity.getInstance().toDoList.add(title);
