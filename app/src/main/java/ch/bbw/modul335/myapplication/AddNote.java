@@ -172,5 +172,6 @@ public class AddNote extends AppCompatActivity {
         });
         this.finish();
 
+        Note note = new Note(title, description, picture, date, time);
     }
 }
