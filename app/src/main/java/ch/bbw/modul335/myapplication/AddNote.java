@@ -30,7 +30,9 @@ public class AddNote extends AppCompatActivity {
     private DatePickerDialog datePickerDialog;
     private Button dateButton;
     private Button timeButton;
+    private Button saveButton;
     private EditText noteTitle;
+    private EditText noteDescription;
     int hour, min;
 
     private String title;
@@ -55,6 +57,8 @@ public class AddNote extends AppCompatActivity {
         dateButton.setText(getTodaysDate());
         timeButton = findViewById(R.id.timeButton);
         noteTitle = findViewById(R.id.NoteTitle);
+        noteDescription = findViewById(R.id.NoteDescription);
+        saveButton = findViewById(R.id.saveButton);
     }
 
     private String getTodaysDate() {
@@ -123,7 +127,7 @@ public class AddNote extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
-            preview = (ImageView) findViewById(R.id.preview);
+            preview = findViewById(R.id.preview);
             Bundle extras = data.getExtras();
             Bitmap imageBitmap = (Bitmap) extras.get("data");
             preview.setImageBitmap(imageBitmap);
@@ -154,5 +158,18 @@ public class AddNote extends AppCompatActivity {
 
     public void save(View view) {
         title = noteTitle.getText().toString();
+        description = noteTitle.getText().toString();
+        //picture speichern
+        date = dateButton.getText().toString();
+        time = timeButton.getText().toString();
+        MainActivity.getInstance().toDoList.add(title);
+
+        setContentView(R.layout.activity_main);
+        saveButton.setOnClickListener(v -> {
+            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+            startActivity(intent);
+        });
+        this.finish();
+
     }
 }
