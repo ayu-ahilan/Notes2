@@ -65,6 +65,15 @@
             android:onClick="openDatePicker"
             style="?android:spinnerStyle"/>
 
+        <Button
+            android:id="@+id/timeButton"
+            android:onClick="popTimePicker"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Select Time"
+            android:textColor="@color/black"
+            style="?android:spinnerStyle"/>
+
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

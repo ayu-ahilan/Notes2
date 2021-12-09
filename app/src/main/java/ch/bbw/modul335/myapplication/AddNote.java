@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
+import android.app.TimePickerDialog;
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -13,9 +14,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.ImageView;
+import android.widget.TimePicker;
 
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Locale;
 
 public class AddNote extends AppCompatActivity {
 
@@ -24,6 +27,8 @@ public class AddNote extends AppCompatActivity {
     ImageView preview;
     private DatePickerDialog datePickerDialog;
     private Button dateButton;
+    private Button timeButton;
+    int hour, min;
 
     public void takePhoto(View view) {
         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
@@ -38,6 +43,7 @@ public class AddNote extends AppCompatActivity {
         initDatePicker();
         dateButton = findViewById(R.id.datePickerButton);
         dateButton.setText(getTodaysDate());
+        timeButton = findViewById(R.id.timeButton);
     }
 
     private String getTodaysDate() {
@@ -100,9 +106,6 @@ public class AddNote extends AppCompatActivity {
             return "JAN";
         // never happen
             return "JAN";
-
-
-
     }
 
     @Override
@@ -118,5 +121,23 @@ public class AddNote extends AppCompatActivity {
 
     public void openDatePicker(View view) {
         datePickerDialog.show();
+    }
+
+    public void popTimePicker(View view) {
+        TimePickerDialog.OnTimeSetListener onTimeSetListener = new TimePickerDialog.OnTimeSetListener() {
+            @Override
+            public void onTimeSet(TimePicker view, int selectedHour, int selectedMinute) {
+                hour = selectedHour;
+                min = selectedMinute;
+
+                timeButton.setText(String.format(Locale.getDefault(), "%02d:%02d", hour, min));
+
+            }
+        };
+
+        TimePickerDialog timePickerDialog = new TimePickerDialog(this, onTimeSetListener, hour, min, true);
+
+        timePickerDialog.setTitle("Select Time");
+        timePickerDialog.show();
     }
 }
