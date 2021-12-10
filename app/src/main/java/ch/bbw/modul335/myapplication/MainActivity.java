@@ -43,9 +43,11 @@ public class MainActivity extends AppCompatActivity {
         list.setOnItemClickListener(new AdapterView.OnItemClickListener(){
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
                 Intent intent = new Intent(getActivity(), UpdateNote.class);
                 intent.putExtra("id", id);
                 startActivity(intent);
+
             }
         });
     }
@@ -69,12 +71,6 @@ public class MainActivity extends AppCompatActivity {
             final ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>
                     (this, android.R.layout.simple_list_item_1, notesLists);
             list.setAdapter(arrayAdapter);
-            /*list.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-
-                }
-            });*/
         }
     }
 }
