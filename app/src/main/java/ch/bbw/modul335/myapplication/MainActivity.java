@@ -3,9 +3,11 @@ package ch.bbw.modul335.myapplication;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
@@ -37,6 +39,19 @@ public class MainActivity extends AppCompatActivity {
             Intent intent = new Intent(getApplicationContext(), AddNote.class);
             startActivity(intent);
         });
+
+        list.setOnItemClickListener(new AdapterView.OnItemClickListener(){
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(getActivity(), UpdateNote.class);
+                intent.putExtra("id", id);
+                startActivity(intent);
+            }
+        });
+    }
+
+    private Activity getActivity() {
+        return this;
     }
 
     public void loadToDos(){
