@@ -159,7 +159,7 @@ public class AddNote extends AppCompatActivity {
 
     public void save(View view) {
         title = noteTitle.getText().toString();
-        description = noteTitle.getText().toString();
+        description = noteDescription.getText().toString();
 
         date = dateButton.getText().toString();
         time = timeButton.getText().toString();
