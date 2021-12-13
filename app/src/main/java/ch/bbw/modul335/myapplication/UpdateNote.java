@@ -3,6 +3,7 @@ package ch.bbw.modul335.myapplication;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -15,13 +16,9 @@ public class UpdateNote extends AppCompatActivity {
     private EditText noteDescription;
     private Button dateButton;
     private Button timeButton;
-    ImageView preview;
+    ImageView selectedImage;
+    Bitmap bitmap;
     Note note;
-
-    /*public UpdateNote(Note note) {
-        this.note = note;
-
-    }*/
 
     private static UpdateNote instance;
 
@@ -34,6 +31,9 @@ public class UpdateNote extends AppCompatActivity {
         setContentView(R.layout.activity_update_note);
         noteTitle = findViewById(R.id.NoteTitle);
         noteDescription = findViewById(R.id.NoteDescription);
+        dateButton = findViewById(R.id.datePickerButton);
+        timeButton = findViewById(R.id.timeButton);
+        //selectedImage = selectedImage.getRootView().findViewById(R.id.preview);
         instance = this;
         Intent intent = getIntent();
         int id = (int) intent.getLongExtra("id", -1);
@@ -41,8 +41,9 @@ public class UpdateNote extends AppCompatActivity {
             Note note = MainActivity.getInstance().noteList.get(id);
             noteTitle.setText(note.getTitle());
             noteDescription.setText(note.getDescription());
-            //dateButton.setText(note.getDate());
-            //timeButton.setText(note.getTime());
+            //selectedImage.setImageBitmap(note.getPicture());
+            dateButton.setText(note.getDate());
+            timeButton.setText(note.getTime());
         }
     }
 

@@ -26,7 +26,8 @@ public class AddNote extends AppCompatActivity {
 
     static final int REQUEST_IMAGE_CAPTURE = 1;
 
-    ImageView preview;
+    ImageView selectedImage;
+    Bitmap bmap;
     private DatePickerDialog datePickerDialog;
     private Button dateButton;
     private Button timeButton;
@@ -38,7 +39,6 @@ public class AddNote extends AppCompatActivity {
 
     private String title;
     private String description;
-    private Bitmap picture;
     private String date;
     private String time;
 
@@ -60,6 +60,7 @@ public class AddNote extends AppCompatActivity {
         noteTitle = findViewById(R.id.NoteTitle);
         noteDescription = findViewById(R.id.NoteDescription);
         saveButton = findViewById(R.id.saveButton);
+        selectedImage = (ImageView)findViewById(R.id.preview);;
     }
 
     private String getTodaysDate() {
@@ -128,10 +129,10 @@ public class AddNote extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
-            preview = findViewById(R.id.preview);
+            selectedImage = findViewById(R.id.preview);
             Bundle extras = data.getExtras();
             Bitmap imageBitmap = (Bitmap) extras.get("data");
-            preview.setImageBitmap(imageBitmap);
+            selectedImage.setImageBitmap(imageBitmap);
         }
     }
 
@@ -160,10 +161,11 @@ public class AddNote extends AppCompatActivity {
     public void save(View view) {
         title = noteTitle.getText().toString();
         description = noteDescription.getText().toString();
-
+        selectedImage.buildDrawingCache();
+        bmap = selectedImage.getDrawingCache();
         date = dateButton.getText().toString();
         time = timeButton.getText().toString();
-        Note note = new Note(title, description, picture, date, time);
+        Note note = new Note(title, description, bmap, date, time);
         MainActivity.getInstance().noteList.add(note);
 
         setContentView(R.layout.activity_main);

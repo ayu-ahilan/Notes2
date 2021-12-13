@@ -1,18 +1,20 @@
 package ch.bbw.modul335.myapplication;
 
 import android.graphics.Bitmap;
+import android.widget.ImageView;
 
 public class Note {
     private String title;
     private String description;
-    private Bitmap picture;
+    private ImageView picture;
     private String date;
     private String time;
+    private Bitmap bmap;
 
-    public Note(String title, String description, Bitmap picture, String date, String time) {
+    public Note(String title, String description, Bitmap bmap, String date, String time) {
         this.title = title;
         this.description = description;
-        this.picture = picture;
+        this.bmap = bmap;
         this.date = date;
         this.time = time;
     }
@@ -34,11 +36,11 @@ public class Note {
     }
 
     public Bitmap getPicture() {
-        return picture;
+        return bmap;
     }
 
-    public void setPicture(Bitmap picture) {
-        this.picture = picture;
+    public void setPicture(Bitmap bmap) {
+        this.bmap = bmap;
     }
 
     public String getDate() {
