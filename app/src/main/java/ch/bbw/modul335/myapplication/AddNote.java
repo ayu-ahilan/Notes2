@@ -38,6 +38,7 @@ public class AddNote extends AppCompatActivity {
     private Button saveButton;
     private EditText noteTitle;
     private EditText noteDescription;
+    Bitmap imageBitmap;
     int hour, min;
 
     private String title;
@@ -135,8 +136,7 @@ public class AddNote extends AppCompatActivity {
         if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
             selectedImage = findViewById(R.id.preview);
             Bundle extras = data.getExtras();
-            Bitmap imageBitmap = (Bitmap) extras.get("data");
-            selectedImage.setImageBitmap(imageBitmap);
+            imageBitmap = (Bitmap) extras.get("data");
         }
     }
 
@@ -165,8 +165,7 @@ public class AddNote extends AppCompatActivity {
     public void save(View view) {
         title = noteTitle.getText().toString();
         description = noteDescription.getText().toString();
-        selectedImage.buildDrawingCache();
-        bmap = selectedImage.getDrawingCache();
+        bmap = imageBitmap;
         date = dateButton.getText().toString();
         time = timeButton.getText().toString();
 
@@ -174,7 +173,6 @@ public class AddNote extends AppCompatActivity {
             Intent intent = new Intent(AddNote.this, AlarmReceiver.class);
             intent.putExtra("nofificationId", notificationId);
             intent.putExtra("textOfNotification", title);
-
 
             PendingIntent alarmIntent = PendingIntent.getBroadcast(AddNote.this, 0, intent, PendingIntent.FLAG_CANCEL_CURRENT);
 

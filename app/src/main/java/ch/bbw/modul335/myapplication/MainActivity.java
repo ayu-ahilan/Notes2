@@ -47,7 +47,6 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent(getActivity(), UpdateNote.class);
                 intent.putExtra("id", id);
                 startActivity(intent);
-
             }
         });
     }
