@@ -65,7 +65,7 @@ public class AddNote extends AppCompatActivity {
         noteTitle = findViewById(R.id.NoteTitle);
         noteDescription = findViewById(R.id.NoteDescription);
         saveButton = findViewById(R.id.saveButton);
-        selectedImage = (ImageView)findViewById(R.id.preview);;
+        selectedImage = (ImageView)findViewById(R.id.preview);
     }
 
     private String getTodaysDate() {
