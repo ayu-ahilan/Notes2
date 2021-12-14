@@ -2,10 +2,13 @@ package ch.bbw.modul335.myapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlarmManager;
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
+import android.app.PendingIntent;
 import android.app.TimePickerDialog;
 import android.content.ActivityNotFoundException;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Picture;
@@ -17,6 +20,7 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
 import java.util.Calendar;
 import java.util.Date;
@@ -36,12 +40,12 @@ public class AddNote extends AppCompatActivity {
     private EditText noteDescription;
     int hour, min;
 
-
     private String title;
     private String description;
     private String date;
     private String time;
 
+    private int notificationId = 236;
 
     public void takePhoto(View view) {
         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
@@ -165,6 +169,28 @@ public class AddNote extends AppCompatActivity {
         bmap = selectedImage.getDrawingCache();
         date = dateButton.getText().toString();
         time = timeButton.getText().toString();
+
+        if (date != null && time != null) {
+            Intent intent = new Intent(AddNote.this, AlarmReceiver.class);
+            intent.putExtra("nofificationId", notificationId);
+            intent.putExtra("textOfNotification", title);
+
+
+            PendingIntent alarmIntent = PendingIntent.getBroadcast(AddNote.this, 0, intent, PendingIntent.FLAG_CANCEL_CURRENT);
+
+            AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
+
+            Calendar startTime = Calendar.getInstance();
+            startTime.set(Calendar.HOUR_OF_DAY, hour);
+            startTime.set(Calendar.MINUTE, min);
+            startTime.set(Calendar.SECOND, 0);
+            long alarmStartTime = startTime.getTimeInMillis();
+
+            alarmManager.set(AlarmManager.RTC_WAKEUP, alarmStartTime, alarmIntent);
+
+            Toast.makeText(this, "Done!", Toast.LENGTH_SHORT).show();
+        }
+
         Note note = new Note(title, description, bmap, date, time);
         MainActivity.getInstance().noteList.add(note);
 
