@@ -16,6 +16,7 @@ public class UpdateNote extends AppCompatActivity {
     private EditText noteDescription;
     private Button dateButton;
     private Button timeButton;
+    private Button deleteButtton;
     ImageView selectedImage;
     Bitmap bitmap;
     Note note;
@@ -33,6 +34,7 @@ public class UpdateNote extends AppCompatActivity {
         noteDescription = findViewById(R.id.NoteDescription);
         dateButton = findViewById(R.id.datePickerButton);
         timeButton = findViewById(R.id.timeButton);
+        deleteButtton = findViewById(R.id.deleteButton);
         //selectedImage = selectedImage.getRootView().findViewById(R.id.preview);
         instance = this;
         Intent intent = getIntent();
@@ -54,6 +56,7 @@ public class UpdateNote extends AppCompatActivity {
     }
 
     public void save(View view) {
+
     }
 
     public void setNote(Note note) {
@@ -61,4 +64,11 @@ public class UpdateNote extends AppCompatActivity {
     }
 
 
+    public void delete(View view) {
+        note = null;
+        deleteButtton.setOnClickListener(v -> {
+            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+            startActivity(intent);
+        });
+    }
 }
