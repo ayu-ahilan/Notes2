@@ -2,6 +2,7 @@ package ch.bbw.modul335.myapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
@@ -16,6 +17,7 @@ public class UpdateNote extends AppCompatActivity {
     private EditText noteDescription;
     private Button dateButton;
     private Button timeButton;
+    private DatePickerDialog datePickerDialog;
     private Button deleteButtton;
     ImageView selectedImage;
     Bitmap bitmap;
@@ -50,6 +52,7 @@ public class UpdateNote extends AppCompatActivity {
     }
 
     public void openDatePicker(View view) {
+        datePickerDialog.show();
     }
 
     public void popTimePicker(View view) {
