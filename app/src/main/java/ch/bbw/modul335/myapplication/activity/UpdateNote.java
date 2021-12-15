@@ -1,4 +1,4 @@
-package ch.bbw.modul335.myapplication;
+package ch.bbw.modul335.myapplication.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,7 +7,6 @@ import android.app.DatePickerDialog;
 import android.app.PendingIntent;
 import android.app.TimePickerDialog;
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -18,6 +17,10 @@ import android.widget.Toast;
 
 import java.util.Calendar;
 import java.util.Locale;
+
+import ch.bbw.modul335.myapplication.R;
+import ch.bbw.modul335.myapplication.model.Note;
+import ch.bbw.modul335.myapplication.receiver.AlarmReceiver;
 
 public class UpdateNote extends AppCompatActivity {
 

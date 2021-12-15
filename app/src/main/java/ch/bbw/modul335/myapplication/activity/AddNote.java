@@ -1,21 +1,14 @@
-package ch.bbw.modul335.myapplication;
+package ch.bbw.modul335.myapplication.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.NotificationCompat;
 
 import android.app.AlarmManager;
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
-import android.app.NotificationChannel;
-import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.app.TimePickerDialog;
-import android.content.ActivityNotFoundException;
-import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.Picture;
-import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.View;
@@ -26,15 +19,15 @@ import android.widget.ImageView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
-import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.nio.charset.StandardCharsets;
 import java.text.ParseException;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.Locale;
+
+import ch.bbw.modul335.myapplication.R;
+import ch.bbw.modul335.myapplication.model.Note;
+import ch.bbw.modul335.myapplication.receiver.AlarmReceiver;
+
 public class AddNote extends AppCompatActivity {
 
     static final int REQUEST_IMAGE_CAPTURE = 1;

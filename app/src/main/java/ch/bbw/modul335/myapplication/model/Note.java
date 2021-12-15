@@ -1,4 +1,4 @@
-package ch.bbw.modul335.myapplication;
+package ch.bbw.modul335.myapplication.model;
 
 import android.graphics.Bitmap;
 import android.widget.ImageView;
