@@ -69,11 +69,11 @@ public class MainActivity extends AppCompatActivity {
         return this;
     }
 
-    public void loadNotes(){
+    public void loadNotes() {
         notesLists.clear();
-        for (Note note:noteList) {
-            notesLists.add(note.getTitle());
-        }
+            for (Note note : noteList) {
+                notesLists.add(note.getTitle());
+            }
     }
 
     /*public Note readData() {
