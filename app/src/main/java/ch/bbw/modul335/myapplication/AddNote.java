@@ -25,6 +25,12 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TimePicker;
 import android.widget.Toast;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.text.ParseException;
 import java.util.Calendar;
 import java.util.Date;
@@ -32,6 +38,8 @@ import java.util.Locale;
 public class AddNote extends AppCompatActivity {
 
     static final int REQUEST_IMAGE_CAPTURE = 1;
+
+    public int notificationId = 1;
 
     ImageView selectedImage;
     Bitmap bmap;
@@ -163,7 +171,7 @@ public class AddNote extends AppCompatActivity {
         timePickerDialog.show();
     }
 
-    public void save(View view) throws ParseException {
+    public void save(View view) throws ParseException, FileNotFoundException {
         title = noteTitle.getText().toString();
         description = noteDescription.getText().toString();
         bmap = imageBitmap;
@@ -171,7 +179,7 @@ public class AddNote extends AppCompatActivity {
         time = timeButton.getText().toString();
 
         if (date != null && time != null) {
-            /*Intent intent = new Intent(AddNote.this, AlarmReceiver.class);
+            Intent intent = new Intent(AddNote.this, AlarmReceiver.class);
             intent.putExtra("nofificationId", notificationId);
             intent.putExtra("textOfNotification", title);
 
@@ -187,7 +195,7 @@ public class AddNote extends AppCompatActivity {
 
             alarmManager.set(AlarmManager.RTC_WAKEUP, alarmStartTime, alarmIntent);
 
-            Toast.makeText(this, "Done!", Toast.LENGTH_SHORT).show();*/
+            Toast.makeText(this, "Done!", Toast.LENGTH_SHORT).show();
 
             Calendar cal = Calendar.getInstance();
 
@@ -204,6 +212,20 @@ public class AddNote extends AppCompatActivity {
 
         Note note = new Note(title, description, bmap, date, time);
         MainActivity.getInstance().noteList.add(note);
+
+        /*//speichern
+        String filename = "settings.json";
+        Context context = this;
+
+        File file = new File(context.getFilesDir(), filename);
+        String[] files = context.fileList();
+
+        String fileContents = title + "," + description + "," + bmap.toString() + "," + date + "," + time;
+        try (FileOutputStream fos = context.openFileOutput(filename, Context.MODE_PRIVATE)) {
+            fos.write(fileContents.getBytes(StandardCharsets.UTF_8));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }*/
 
         setContentView(R.layout.activity_main);
         saveButton.setOnClickListener(v -> {

@@ -34,12 +34,14 @@ public class UpdateNote extends AppCompatActivity {
     private String description;
     private String date;
     private String time;
+    private Note generalNote;
 
     private int notificationId = 236;
 
     ImageView selectedImage;
     Note note;
     int hour, min;
+    int id;
 
     private static UpdateNote instance;
 
@@ -59,7 +61,7 @@ public class UpdateNote extends AppCompatActivity {
         imageView = findViewById(R.id.previewup);
         instance = this;
         Intent intent = getIntent();
-        int id = (int) intent.getLongExtra("id", -1);
+        id = (int) intent.getLongExtra("id", -1);
         if (id != -1) {
             Note note = MainActivity.getInstance().noteList.get(id);
             noteTitle.setText(note.getTitle());
@@ -67,6 +69,7 @@ public class UpdateNote extends AppCompatActivity {
             imageView.setImageBitmap(note.getPicture());
             dateButton.setText(note.getDate());
             timeButton.setText(note.getTime());
+            generalNote = note;
         }
     }
 
@@ -137,10 +140,9 @@ public class UpdateNote extends AppCompatActivity {
     }
 
     public void delete (View view){
-        note = null;
-        deleteButtton.setOnClickListener(v -> {
-            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-            startActivity(intent);
-        });
+        if (id != -1) {
+            MainActivity.getInstance().noteList.remove(generalNote);
+        }
+        this.finish();
     }
 }
