@@ -1,10 +1,13 @@
 package ch.bbw.modul335.myapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NotificationCompat;
 
 import android.app.AlarmManager;
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.app.TimePickerDialog;
 import android.content.ActivityNotFoundException;
@@ -12,6 +15,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Picture;
+import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.View;
@@ -21,11 +25,10 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TimePicker;
 import android.widget.Toast;
-
+import java.text.ParseException;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
-
 public class AddNote extends AppCompatActivity {
 
     static final int REQUEST_IMAGE_CAPTURE = 1;
@@ -45,8 +48,6 @@ public class AddNote extends AppCompatActivity {
     private String description;
     private String date;
     private String time;
-
-    private int notificationId = 236;
 
     public void takePhoto(View view) {
         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
@@ -162,7 +163,7 @@ public class AddNote extends AppCompatActivity {
         timePickerDialog.show();
     }
 
-    public void save(View view) {
+    public void save(View view) throws ParseException {
         title = noteTitle.getText().toString();
         description = noteDescription.getText().toString();
         bmap = imageBitmap;
@@ -170,7 +171,7 @@ public class AddNote extends AppCompatActivity {
         time = timeButton.getText().toString();
 
         if (date != null && time != null) {
-            Intent intent = new Intent(AddNote.this, AlarmReceiver.class);
+            /*Intent intent = new Intent(AddNote.this, AlarmReceiver.class);
             intent.putExtra("nofificationId", notificationId);
             intent.putExtra("textOfNotification", title);
 
@@ -186,7 +187,19 @@ public class AddNote extends AppCompatActivity {
 
             alarmManager.set(AlarmManager.RTC_WAKEUP, alarmStartTime, alarmIntent);
 
-            Toast.makeText(this, "Done!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Done!", Toast.LENGTH_SHORT).show();*/
+
+            Calendar cal = Calendar.getInstance();
+
+            System.out.println(date);
+            System.out.println(time);
+            System.out.println();
+            System.out.println(cal.get(Calendar.YEAR));
+            System.out.println(cal.get(Calendar.MONTH));
+            System.out.println(cal.get(Calendar.DAY_OF_MONTH));
+            System.out.println(hour);
+            System.out.println(min);
+
         }
 
         Note note = new Note(title, description, bmap, date, time);
