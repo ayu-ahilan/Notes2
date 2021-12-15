@@ -146,6 +146,7 @@ public class AddNote extends AppCompatActivity {
             selectedImage = findViewById(R.id.preview);
             Bundle extras = data.getExtras();
             imageBitmap = (Bitmap) extras.get("data");
+            selectedImage.setImageBitmap(imageBitmap);
         }
     }
 
